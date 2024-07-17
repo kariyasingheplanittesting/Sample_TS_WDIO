@@ -1,0 +1,183 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1691374932953' stop='1691375054143'>
+    <name>AO App Players Screen</name>
+    <title>AO App Players Screen</title>
+    <test-cases>
+        <test-case start='1691374932968' status='broken' stop='1691374952141'>
+            <name>can see contents of Men tab in Players screen</name>
+            <title>can see contents of Men tab in Players screen</title>
+            <labels>
+                <label name='language' value='javascript'/>
+                <label name='framework' value='wdio'/>
+                <label name='thread' value='0-12'/>
+                <label name='feature' value='AO App Players Screen'/>
+            </labels>
+            <parameters>
+                <parameter kind='argument' name='device' value='iphone-16.0'/>
+            </parameters>
+            <steps>
+                <step start='1691374932972' status='broken' stop='1691374952141'>
+                    <name>Given I am on AO app Home screen</name>
+                    <title>Given I am on AO app Home screen</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1691374952141' status='canceled' stop='1691374952141'>
+                    <name>And I can see content of the Home screen</name>
+                    <title>And I can see content of the Home screen</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1691374952141' status='canceled' stop='1691374952141'>
+                    <name>When I navigate to "Players" screen</name>
+                    <title>When I navigate to "Players" screen</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1691374952141' status='canceled' stop='1691374952142'>
+                    <name>And I navigate to "Men" tab</name>
+                    <title>And I navigate to "Men" tab</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1691374952142' status='canceled' stop='1691374952142'>
+                    <name>Then I can see "Radu Albot" is in the list</name>
+                    <title>Then I can see "Radu Albot" is in the list</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+            <failure>
+                <message>Error: waitUntil condition timed out after 10000ms</message>
+                <stack-trace>Error: waitUntil condition timed out after 10000ms
+                    at C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\webdriverio\build\commands\browser\waitUntil.js:68:19
+                    at async Browser.wrapCommandFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\@wdio\utils\build\shim.js:137:29)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1691374952144' status='broken' stop='1691375003036'>
+            <name>can see contents of Women tab in Players screen</name>
+            <title>can see contents of Women tab in Players screen</title>
+            <labels>
+                <label name='language' value='javascript'/>
+                <label name='framework' value='wdio'/>
+                <label name='thread' value='0-12'/>
+                <label name='feature' value='AO App Players Screen'/>
+            </labels>
+            <parameters>
+                <parameter kind='argument' name='device' value='iphone-16.0'/>
+            </parameters>
+            <steps>
+                <step start='1691374952145' status='broken' stop='1691375003036'>
+                    <name>Given I am on AO app Home screen</name>
+                    <title>Given I am on AO app Home screen</title>
+                    <attachments>
+                        <attachment title='Screenshot' source='2949b899-8a41-4692-bcca-736eabe16b99-attachment.png' type='image/png' size='509664'/>
+                    </attachments>
+                    <steps/>
+                </step>
+                <step start='1691375003036' status='canceled' stop='1691375003037'>
+                    <name>And I can see content of the Home screen</name>
+                    <title>And I can see content of the Home screen</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1691375003037' status='canceled' stop='1691375003037'>
+                    <name>When I navigate to "Players" screen</name>
+                    <title>When I navigate to "Players" screen</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1691375003037' status='canceled' stop='1691375003037'>
+                    <name>When I navigate to "Women" tab</name>
+                    <title>When I navigate to "Women" tab</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1691375003038' status='canceled' stop='1691375003038'>
+                    <name>Then I can see "Bianca Andreescu" is in the list</name>
+                    <title>Then I can see "Bianca Andreescu" is in the list</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+            <failure>
+                <message>Error: element ("-ios class chain:**/XCUIElementTypeOther[`name Contains "Continue"`]") still not displayed after 50000ms</message>
+                <stack-trace>Error: element ("-ios class chain:**/XCUIElementTypeOther[`name Contains "Continue"`]") still not displayed after 50000ms
+                    at C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\webdriverio\build\commands\browser\waitUntil.js:66:23
+                    at async Element.wrapCommandFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\@wdio\utils\build\shim.js:137:29)
+                    at async Element.elementErrorHandlerCallbackFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\webdriverio\build\middlewares.js:24:32)
+                    at async Element.wrapCommandFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\@wdio\utils\build\shim.js:137:29)
+                    at async Element.wrapCommandFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\@wdio\utils\build\shim.js:137:29)
+                    at async Element.elementErrorHandlerCallbackFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\webdriverio\build\middlewares.js:24:32)
+                    at async Element.wrapCommandFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\@wdio\utils\build\shim.js:137:29)</stack-trace>
+            </failure>
+        </test-case>
+        <test-case start='1691375003046' status='broken' stop='1691375054140'>
+            <name>can see contents of Favourites tab in Players screen</name>
+            <title>can see contents of Favourites tab in Players screen</title>
+            <labels>
+                <label name='language' value='javascript'/>
+                <label name='framework' value='wdio'/>
+                <label name='thread' value='0-12'/>
+                <label name='feature' value='AO App Players Screen'/>
+            </labels>
+            <parameters>
+                <parameter kind='argument' name='device' value='iphone-16.0'/>
+            </parameters>
+            <steps>
+                <step start='1691375003053' status='broken' stop='1691375054140'>
+                    <name>Given I am on AO app Home screen</name>
+                    <title>Given I am on AO app Home screen</title>
+                    <attachments>
+                        <attachment title='Screenshot' source='497e536d-6f87-4ec9-a9f5-dda8a86a9ecb-attachment.png' type='image/png' size='512129'/>
+                    </attachments>
+                    <steps/>
+                </step>
+                <step start='1691375054140' status='canceled' stop='1691375054140'>
+                    <name>And I can see content of the Home screen</name>
+                    <title>And I can see content of the Home screen</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1691375054140' status='canceled' stop='1691375054141'>
+                    <name>When I selected "R. Nadal" from Suggested Players list</name>
+                    <title>When I selected "R. Nadal" from Suggested Players list</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1691375054141' status='canceled' stop='1691375054141'>
+                    <name>And I add player "Rafael Nadal" to the Favourites list</name>
+                    <title>And I add player "Rafael Nadal" to the Favourites list</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1691375054141' status='canceled' stop='1691375054141'>
+                    <name>And I navigate to "Players" screen</name>
+                    <title>And I navigate to "Players" screen</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1691375054141' status='canceled' stop='1691375054141'>
+                    <name>Then I can see "Rafael Nadal" is in the list</name>
+                    <title>Then I can see "Rafael Nadal" is in the list</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+            <failure>
+                <message>Error: element ("-ios class chain:**/XCUIElementTypeOther[`name Contains "Continue"`]") still not displayed after 50000ms</message>
+                <stack-trace>Error: element ("-ios class chain:**/XCUIElementTypeOther[`name Contains "Continue"`]") still not displayed after 50000ms
+                    at C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\webdriverio\build\commands\browser\waitUntil.js:66:23
+                    at async Element.wrapCommandFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\@wdio\utils\build\shim.js:137:29)
+                    at async Element.elementErrorHandlerCallbackFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\webdriverio\build\middlewares.js:24:32)
+                    at async Element.wrapCommandFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\@wdio\utils\build\shim.js:137:29)
+                    at async Element.wrapCommandFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\@wdio\utils\build\shim.js:137:29)
+                    at async Element.elementErrorHandlerCallbackFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\webdriverio\build\middlewares.js:24:32)
+                    at async Element.wrapCommandFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\@wdio\utils\build\shim.js:137:29)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

@@ -1,0 +1,70 @@
+<?xml version='1.0'?>
+<ns2:test-suite xmlns:ns2='urn:model.allure.qatools.yandex.ru' start='1692331993484' stop='1692332026637'>
+    <name>AO Web-Highlights</name>
+    <title>AO Web-Highlights</title>
+    <test-cases>
+        <test-case start='1692331993500' status='broken' stop='1692332026631'>
+            <name>clicking on an AO Match Highlight video</name>
+            <title>clicking on an AO Match Highlight video</title>
+            <labels>
+                <label name='language' value='javascript'/>
+                <label name='framework' value='wdio'/>
+                <label name='thread' value='0-0'/>
+                <label name='feature' value='AO Web-Highlights'/>
+            </labels>
+            <parameters>
+                <parameter kind='argument' name='browser' value='chrome-115.0.5790.171'/>
+            </parameters>
+            <steps>
+                <step start='1692331993504' status='passed' stop='1692332005156'>
+                    <name>Given I am on AO web home page</name>
+                    <title>Given I am on AO web home page</title>
+                    <attachments/>
+                    <steps/>
+                </step>
+                <step start='1692332005157' status='passed' stop='1692332006857'>
+                    <name>And I navigate to 'News' under 'NEWS'</name>
+                    <title>And I navigate to 'News' under 'NEWS'</title>
+                    <attachments>
+                        <attachment title='Screenshot' source='f0db86bd-a9a2-45ed-8ddd-20d07fddd012-attachment.png' type='image/png' size='1018379'/>
+                    </attachments>
+                    <steps/>
+                </step>
+                <step start='1692332006857' status='passed' stop='1692332010127'>
+                    <name>And I see 'News' page is loaded</name>
+                    <title>And I see 'News' page is loaded</title>
+                    <attachments>
+                        <attachment title='Screenshot' source='4e8ebba9-fdd9-45b1-8632-ecddfdf415f9-attachment.png' type='image/png' size='680892'/>
+                    </attachments>
+                    <steps/>
+                </step>
+                <step start='1692332010127' status='passed' stop='1692332010896'>
+                    <name>Then I see "AO Match Highlights"</name>
+                    <title>Then I see "AO Match Highlights"</title>
+                    <attachments>
+                        <attachment title='Screenshot' source='94df2342-4ce7-4b3f-adc1-23d679a0f843-attachment.png' type='image/png' size='922884'/>
+                    </attachments>
+                    <steps/>
+                </step>
+                <step start='1692332010896' status='broken' stop='1692332026631'>
+                    <name>Then I click on video "Stefanos Tsitsipas v Novak Djokovic Highlights (F) | Australian Open 2023" under "AO Match Highlights"</name>
+                    <title>Then I click on video "Stefanos Tsitsipas v Novak Djokovic Highlights (F) | Australian Open 2023" under "AO Match Highlights"</title>
+                    <attachments>
+                        <attachment title='Screenshot' source='fa1fe5bf-8c54-4102-99a9-f8b000271dde-attachment.png' type='image/png' size='922884'/>
+                    </attachments>
+                    <steps/>
+                </step>
+            </steps>
+            <attachments/>
+            <failure>
+                <message>stale element reference: stale element reference: stale element not found</message>
+                <stack-trace>stale element reference: stale element reference: stale element not found
+                  (Session info: chrome=115.0.5790.171)
+                    at getErrorFromResponseBody (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\webdriver\build\utils.js:198:12)
+                    at NodeJSRequest._request (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\webdriver\build\request\index.js:166:60)
+                    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+                    at async Browser.wrapCommandFn (C:\Users\kariyasinghe\OneDrive - Planit Test Management Solutions Pty Ltd\Documents\Projects\Training\TS\ao-test-automation\node_modules\@wdio\utils\build\shim.js:137:29)</stack-trace>
+            </failure>
+        </test-case>
+    </test-cases>
+</ns2:test-suite>

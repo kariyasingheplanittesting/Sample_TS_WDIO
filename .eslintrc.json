@@ -1,0 +1,34 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["cucumber", "@typescript-eslint"],
+  "ignorePatterns": ["**/*.feature"],
+  "rules": {
+    "cucumber/async-then": 2,
+    "cucumber/expression-type": ["error"],
+    "cucumber/no-restricted-tags": [2],
+    "cucumber/no-arrow-functions": 2,
+    "class-methods-use-this": "off",
+    "no-restricted-syntax": ["off"],
+    "no-await-in-loop": "off"
+  },
+  "globals": {
+    "$$": "readonly",
+    "browser": "readonly",
+    "expect": "readonly"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
+    }
+  }
+}

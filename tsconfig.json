@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "target": "ES6",
+    "baseUrl": ".",
+    "sourceMap": true,
+    "types": ["node", "webdriverio/async", "@wdio/cucumber-framework", "expect-webdriverio"]
+  }
+}

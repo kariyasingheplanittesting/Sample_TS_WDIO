@@ -1,4 +1,5 @@
 import { binding, then, when } from 'cucumber-tsflow';
+import WebMatchCard from 'src/component/matchCardComponent/WebMatchCardComponent';
 import { IMatchCard } from 'src/model/MatchCardModel';
 import WebDrawsPage from 'src/pages/drawsPage/WebDrawsPage';
 import WebMatchDetailsPage from 'src/pages/matchDetailsPage/WebMatchDetailsPage';
@@ -36,6 +37,11 @@ export default class WebMatchDetailsSteps {
         players?.playerFourName
       ])
     ).toBe(true);
+  }
+
+  @when(/^I click on name of player "([^"]*)"$/)
+  public async whenIClickOnPlayerName(player: string) {
+    await WebMatchDetailsPage.selectPlayer(player);
   }
 
   @then(/^I see the "([^"]*)" section open$/)
@@ -102,4 +108,13 @@ export default class WebMatchDetailsSteps {
   
   }
 
+  @then(/^I see "([^"]*)" as status on match details page$/)
+  public async validateMatchStatusOnMatchDetailsPage(matchStatus:string){
+    const webMatchCard = new WebMatchCard(await $(`//div[@class="score-row score-row--fixed-height score-row--disabled match-centre-scorecard__card"]`));
+    const actualMatchStatus = await webMatchCard.getMatchStatus();
+    expect(actualMatchStatus).toBe(matchStatus);
+  }
+
+  
 }
+ 

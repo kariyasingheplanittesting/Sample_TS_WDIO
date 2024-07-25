@@ -12,8 +12,6 @@ export default class VideoComponent {
     const iframeSelector = `[title='${section}']`;
     const iframeElement = await $(iframeSelector);
   
-
-
     if (iframeElement==null){
         throw new Error(`This Section "${section}" does not exits.`);
     }
@@ -22,9 +20,7 @@ export default class VideoComponent {
       this.numberOfScrollClick=Number(play);
     }
 
-    await browser.switchToFrame(iframeElement);
-
-      
+    await browser.switchToFrame(iframeElement);   
       
       let answer = false
       for(let index=0; index<this.numberOfScrollClick && !answer; index +=1){
@@ -45,14 +41,14 @@ export default class VideoComponent {
               // }
               break;
           }
+        }
         
           if (answer===false){
             (await $(this.scrollRightbutton)).click();
             (await $(this.scrollRightbutton)).click();
 
           }
-    
-        }
+            
       }
 
         if (answer===false) {

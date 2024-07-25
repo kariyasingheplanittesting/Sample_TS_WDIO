@@ -2,9 +2,13 @@ node_modules/
 allure-results/
 allure-report/
 package-lock.json
+
 target/
 
 .vscode/launch.json
 .vscode/settings.json
 .env
 *.log
+.DS_Store
+*.zip
+*.tgz

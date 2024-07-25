@@ -1,4 +1,4 @@
-import { binding, when } from 'cucumber-tsflow';
+import { binding, then, when } from 'cucumber-tsflow';
 import AppDrawsScreen from 'src/pages/drawsPage/AppDrawsScreen';
 
 @binding()
@@ -21,5 +21,17 @@ export default class AppDrawsPageSteps {
   @when(/^I select "([^"]*)" from dropdown on Draws screen$/)
   public async whenISelectOptionFromTheDropdownOnDrawsScreen(matchType: string) {
     await AppDrawsScreen.clickMatchDropdownAndChose(matchType);
+  }
+
+  @then(/^I select Round 1 by using index "([^"]*)"$/)
+  public async validateRoundButtonIsClicked(round:string){
+    await AppDrawsScreen.clickRoundButton(round);
+
+  }
+
+  @then(/^I can see match cards for that round$/)
+  public async validateMathCardsDisplayedForSelectedRound(){
+    await AppDrawsScreen.isPageLoaded();
+    expect(await AppDrawsScreen.getAllMatchesFromActiveRound()).toBeGreaterThan(0);
   }
 }

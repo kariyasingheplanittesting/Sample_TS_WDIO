@@ -1,8 +1,6 @@
 import { binding, when, then } from 'cucumber-tsflow';
 import WebNewsArticlePage from 'src/pages/newsArticlePage/WebNewsArticlePage';
 import WebNewsPage from 'src/pages/newsPage/WebNewsPage';
-import VideoComponent from 'src/component/videoComponent/videoComponent';
-
 
 @binding()
 export default class WebNewsHighlightsSteps {
@@ -48,16 +46,4 @@ export default class WebNewsHighlightsSteps {
     expect(await WebNewsArticlePage.isPageLoaded()).toBe(true);
     expect(await WebNewsArticlePage.getArticleTitle()).toBe(selectedNewsArticleTitle);
   }
-
-  @then(/^I click on video "([^"]*)" under "([^"]*)"$/)
-  public async thenIClickAndVerifyVideo(title: string, section:string) {
-    await new VideoComponent().clickVideoAndVerifyPlayer(title,section);
-
-  }
-
-  @then(/^I verify Video is playing$/)
-  public async verifyVideoPlaying() {
-    await new VideoComponent().verifyMediaPlayer();
-  }
-
 }

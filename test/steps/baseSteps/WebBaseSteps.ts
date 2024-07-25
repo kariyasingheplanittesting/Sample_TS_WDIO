@@ -26,7 +26,7 @@ export default class WebBaseSteps extends BaseSteps {
     }
   }
 
-  @when(/^I navigate to '([^"]*)' under '([^"]*)'$/)
+  @when(/^I navigate to "([^"]*)" under "([^"]*)"$/)
   public async navigateToSubMenu(subMenuOption: string, mainMenuOption: string) {
     // skinny mobile window
     if (await WebHomePage.isHamburgerMenuBtnDisplayed()) {

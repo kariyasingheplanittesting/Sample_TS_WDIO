@@ -84,8 +84,8 @@ exports.config = {
       Allure.addEnvironment('Release Type', process.env.RELEASE_TYPE);
     }
   },
-  afterStep(uri: undefined, feature: undefined, scenario: { error: boolean }) {
-    browser.takeScreenshot();
+  afterStep: async function(uri: undefined, feature: undefined, scenario: { error: boolean }) {
+   await browser.takeScreenshot();
   },
 };
 

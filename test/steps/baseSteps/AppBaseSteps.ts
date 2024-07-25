@@ -9,6 +9,21 @@ export default class AppBaseSteps {
     expect(await AppLandingScreen.goToHomeScreen()).toBe(true);
   }
 
+  @when(/^I am on landing page$/)
+  public async whenIamOnLandingPage() {
+    expect(await AppLandingScreen.goToLandingPage()).toBe(true);
+  }
+
+  @when(/^I see the acknowledgement message "([^"]*)"$/)
+  public async seeAcknowledgementMessage(message:string) {
+    expect(await AppLandingScreen.viewMessage()).toBe(message);
+  }
+
+  @when(/^I click on continue button$/)
+  public async whenIclickOnContinueButton() {
+    await AppLandingScreen.clickContinueButton();
+  }
+
   @when(/^I navigate to "([^"]*)" screen$/)
   public async navigateToScreen(menuItem: string) {
     await AppHomeScreen.goToScreen(menuItem);

@@ -4,6 +4,7 @@ import BasePage from '../basePage/BasePage';
 import WebMatchDetailsPage from '../matchDetailsPage/WebMatchDetailsPage';
 
 class WebMatchSchedulePage extends BasePage {
+ 
   private readonly scheduled_Matches_Score_Row_Wrapper_Selector = '.score-row__wrapper';
 
   async isPageLoaded() {
@@ -141,6 +142,40 @@ class WebMatchSchedulePage extends BasePage {
       playerNames.every((i, j) => i === playerNamesFromElements[j])
     );
   }
+
+  public async clickOnDayPicker(day: string) {
+    const selectedDay = await $(
+      `//div[contains(@class, "desktop")]//button[normalize-space(text())='${day}']`
+    );
+    if (selectedDay === null) {
+      throw new Error(`Can not find the "${day}"`);
+    } else {
+      browser.waitUntil(async () => selectedDay.isClickable());
+      await selectedDay.click();
+    }
+  }
+
+  public async getMatchCard(players: string[]) {
+    const allMatches = await this.getAllMatches();
+    let answerMatch;
+    for (const match of allMatches) {
+      const playersList = await match.getPlayers();
+      if (await this.Equals(players, playersList)) {
+        answerMatch=match
+        break;
+      }
+    }
+  
+    return answerMatch;
+  }
+
+  public async getMatchStatus(players: any) {
+    const match = await this.getMatchCard(players)
+    return match.getMatchStatus();
+    
+  }
+
 }
+
 
 export default new WebMatchSchedulePage();

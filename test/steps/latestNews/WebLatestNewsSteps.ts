@@ -13,6 +13,11 @@ export default class WebNewsFeedSteps {
     expect(await WebHomePage.isLatestNewsDisplayed()).toBe(true);
   }
 
+  @then(/^I can see the "([^"]*)" section$/)
+  public async thenICanSeeLatestNewsSection(title: string) {
+    expect(await WebHomePage.isHeadingDisplayed(title)).toBe(true);
+  }
+
   @when(/^I open a news article$/)
   public async whenIOpenANewsArticle() {
     this.latestNewsHeading = await WebHomePage.clickFirstLatestNews();
@@ -30,8 +35,12 @@ export default class WebNewsFeedSteps {
     expect(await WebNewsPage.isPageLoaded()).toBe(true);
   }
 
-  @then(/^I can AO Match Highlights headline$/)
+  @then(/^I can see the Listen to the AO page$/)
+  public async thenICanSeeListentoTheAOPage() {
+    expect(await WebNewsPage.isPageLoaded()).toBe(true);
+  }
 
+  @then(/^I can AO Match Highlights headline$/)
   @when(/^I navigate to Ao Live Radio page$/)
   public async whenINavigateToAOLiveRadioPage() {
     await WebHomePage.clickAoLiveRadioButton();
@@ -53,6 +62,26 @@ export default class WebNewsFeedSteps {
   public async thenICanSeeTheHeading(heading: string) {
     expect(await WebAOLiveRadioPage.isPageLoaded()).toBe(true);
     expect(await WebAOLiveRadioPage.getHeading(heading)).toBe(true);
+  }
+
+  @when(/^I see article titled "([^"]*)"$/)
+  public async viewArticleTitle(title: string) {
+    expect(await WebNewsPage.getArticleTitle()).toContain(title);
+  }
+
+  @then(/^I click on article "([^"]*)"$/)
+  public async clickArticle(Article: string) {
+    expect(await WebNewsPage.ArticleIsClicked(Article));
+  }
+
+  @then(/^I click Load More button after scrolling down$/)
+  public async clickLoadMore() {
+    expect(await WebNewsPage.clickLoadMore());
+  }
+
+  @when(/^I see article card titled "([^"]*)"$/)
+  public async viewArticleCardTitled(title: string) {
+    expect(await WebNewsPage.isArticleCardTitleDisplayed(title)).toBe(true);
   }
 
 }

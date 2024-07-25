@@ -3,9 +3,7 @@ import WebBasePage from '../basePage/WebBasePage';
 
 class WebNewsPage extends WebBasePage {
   async isPageLoaded() {
-    return browser.waitUntil(
-      async () => (await $('.ao-media-mosaic-banner__rhs-panel').isDisplayed()) === true
-    );
+    return browser.waitUntil(async () => (await $('.news-component').isDisplayed()) === true);
   }
 
   async getMainNewsArticleCount() {
@@ -43,8 +41,27 @@ class WebNewsPage extends WebBasePage {
     return newsArticleTitle;
   }
 
-    
+  async getArticleTitle() {
+    const elements = await $(`//div[@class='article-title']`);
+    const title = await elements.getText();
+    return title;
   }
 
+  async ArticleIsClicked(article: string) {
+    await $(`//h2[contains(text(),'${article}')]`).click();
+  }
+
+  async clickLoadMore() {
+    const LoadMoreButtonElement = $(`.news-component__button`);
+    await (await LoadMoreButtonElement).waitForClickable();
+    await LoadMoreButtonElement.click();
+  }
+
+  async isArticleCardTitleDisplayed(article: string) {
+    const cardTitle = await (await $(`//h2[contains(text(),'${article}')]`)).isDisplayed();
+    return cardTitle;
+  }
+
+}
 
 export default new WebNewsPage();

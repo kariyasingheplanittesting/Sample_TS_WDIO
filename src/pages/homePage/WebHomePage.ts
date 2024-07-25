@@ -3,7 +3,7 @@ import WebBasePage from '../basePage/WebBasePage';
 class WebHomePage extends WebBasePage {
   async isHomePageLoaded(): Promise<true | void> {
     return browser.waitUntil(async () => {
-      const isFeedTitleExist = await $('.homepage-recap-feed__title').isExisting();
+      const isFeedTitleExist = await $(".header-main__nav-menu").isExisting();
       return isFeedTitleExist === true;
     });
   }
@@ -12,16 +12,28 @@ class WebHomePage extends WebBasePage {
     return (await $('.latest-news')).isExisting();
   }
 
-  async goToPlayerToWatch() {
-    return (await $('.players-to-watch')).scrollIntoView(true);
+  async isHeadingDisplayed(title: string){
+    const headingList = (await $$(`.heading-link__title`));
+    let answer = false; 
+
+    for(const heading of headingList){
+       const name = await heading.getText();
+      if (name === title ) {
+        answer = true;
+        break;
+       
+      }
   }
 
-  async getPlayersToWatchList(className?: string): Promise<WebdriverIO.Element[]> {
-    return $$(`.player-list ${className}`);
+  return answer;
+}
+
+  async getFeaturedPlayersList(className?: string): Promise<WebdriverIO.Element[]> {
+    return $$(`.player-circles ${className}`);
   }
 
   async getAllPlayers(): Promise<WebdriverIO.Element[]> {
-    return this.getPlayersToWatchList('.player');
+    return this.getFeaturedPlayersList('.player-circle__name');
   }
 
   async getActivePlayer(): Promise<WebdriverIO.Element> {
@@ -30,21 +42,21 @@ class WebHomePage extends WebBasePage {
       return $('.swiper-slide-active .players-to-watch__player-data h2');
     }
     // desktop view
-    return (await this.getPlayersToWatchList('.player.active'))[0];
+    const listOfFeaturedPlayers = (await this.getFeaturedPlayersList('p.player-circle__name'))
+    return (listOfFeaturedPlayers)[0];
   }
 
-  async getPlayerListFromPlayerToWatch(): Promise<WebdriverIO.Element[]> {
-    return $$('.player-list .player');
+  async getPlayerListFromFeaturedPlayers(): Promise<WebdriverIO.Element[]> {
+    return $$('.player-circle__name');
   }
 
-  async isPlayersToWatchDisplayed(): Promise<boolean> {
-    await this.goToPlayerToWatch();
-    return (await $('.players-to-watch')).isDisplayed();
+  async isFeaturedPlayersDisplayed(): Promise<boolean> {
+    return (await $('.player-circles')).isDisplayed();
   }
 
-  async isPlayersToWatchListDisplayed(): Promise<boolean> {
-    await this.goToPlayerToWatch();
-    return (await $('.player-list')).isDisplayed();
+  async isFeaturedPlayersListDisplayed(): Promise<boolean> {
+    // await this.goToFeaturedPlayers();
+    return (await $(`//div[@class="player-circles__wrapper player-circles__wrapper--desktop"]`)).isDisplayed();
   }
 
   async isDefaultPlayerActive(expectedPlayer: string) {
@@ -87,12 +99,13 @@ class WebHomePage extends WebBasePage {
 
   async verifyActivePlayer(player: string): Promise<boolean> {
     const playerDisplayed = await $('.swiper-slide-active .players-to-watch__player-data h2');
-    const activePlayer = await (await this.getActivePlayer()).getText();
-    return activePlayer === (await playerDisplayed.getText()) && activePlayer === player;
+    // const activeElement = (await this.getActivePlayer())
+    // const activePlayer = await (activeElement).getText();
+    return player === (await playerDisplayed.getText());
   }
 
-  async goToViewPlayersProfile() {
-    const viewProfileBtn = await $('.swiper-slide-active .players-to-watch__action-btns a');
+  async goToViewPlayersProfile(player:string) {
+    const viewProfileBtn = await $(`//p[@class='player-circle__name' and text()='${player}']`);
     await viewProfileBtn.click();
     return browser.waitUntil(async () =>
       (await $('.player-data h1')).isDisplayed()
@@ -101,12 +114,12 @@ class WebHomePage extends WebBasePage {
 
   async isViewAllPlayersButtonExist(): Promise<boolean> {
     return (
-      await $('a.players-to-watch__view-all-button.ao-button.ao-button--white-1')
+      await $(`//div[@class="player-circles"]//child::a[contains(text(),"See all")]`)
     ).isExisting();
   }
 
   async goToAllPlayersPage() {
-    await (await $('a.players-to-watch__view-all-button.ao-button.ao-button--white-1')).click();
+    await (await $(`//div[@class="player-circles"]//child::a[contains(text(),"See all")]`)).click();
   }
 
   async clickFirstLatestNews(): Promise<string> {
@@ -132,6 +145,14 @@ class WebHomePage extends WebBasePage {
 
   async clickMobileNextPlayerButton(): Promise<void> {
     await (await $('.players-to-watch .swiper-button-next')).click();
+  }
+
+  async clickLeftArrow(){
+    await (await $(`//button[@aria-label="Previous"]`)).click();
+  }
+
+  async clickRightArrow(){
+    await (await $(`//button[@aria-label="Next"]`)).click();
   }
 }
 

@@ -1,4 +1,4 @@
-@App @Ios @Android @debug @test
+@App @Ios @Android @debug
 Feature: AO App Newsfeed
 
   As a user,

@@ -1,7 +1,6 @@
 import WebMatchCard from 'src/component/matchCardComponent/WebMatchCardComponent';
 import WebBasePage from '../basePage/WebBasePage';
 
-
 class WebMatchDetailsPage extends WebBasePage {
   async isPlayersNameDisplayed(players: string[]): Promise<Boolean> {
     const [playerOne, playerTwo, playerThree, playerFour] = players;
@@ -46,14 +45,12 @@ class WebMatchDetailsPage extends WebBasePage {
   async clickStatsNavButton(): Promise<void> {
     await $('=Stats').click();
     browser.waitUntil(async () => (await $('tab-nav.is-active').getText()) === 'Stats');
-  
-}
+  }
 
- async clickTabsNavButton(chosenTab:string): Promise<void> {
-   await $(`=${chosenTab}`).click();
-  browser.waitUntil(async () => (await $('tab-nav.is-active').getText()) === chosenTab);
-  
-}
+  async clickTabsNavButton(chosenTab: string): Promise<void> {
+    await $(`=${chosenTab}`).click();
+    browser.waitUntil(async () => (await $('tab-nav.is-active').getText()) === chosenTab);
+  }
 
   async getFirstMatchCard(): Promise<WebMatchCard> {
     return new WebMatchCard(await $('.scorecards-container'));
@@ -69,20 +66,18 @@ class WebMatchDetailsPage extends WebBasePage {
     const namesOnPage = [];
 
     for (const playerOnPage of playersOnPage) {
-      const name = (await playerOnPage
-        .getText())
+      const name = (await playerOnPage.getText())
         .replace(/ WC$/, '') // regex to remove wildcard WC from end of string
         .replace(/ Q$/, '') // regex to remove Q from end of string
         .replace(/ A$/, '') // regex to remove A from end of string
-        .replace(/[0-9]$/g, '')// regex to remove seeding from end of string
+        .replace(/[0-9]$/g, '') // regex to remove seeding from end of string
         .trim();
       namesOnPage.push(name);
     }
 
     for (const expectedPlayerName of expectedPlayers) {
       allExpectedPlayersExist = namesOnPage.includes(expectedPlayerName);
-      if (!allExpectedPlayersExist) 
-      break;
+      if (!allExpectedPlayersExist) break;
     }
     return allExpectedPlayersExist;
   }
@@ -92,27 +87,31 @@ class WebMatchDetailsPage extends WebBasePage {
     return (await matchCard.getMatchTitle()).includes(name);
   }
 
+  async getCommentaryText(sectionName: string): Promise<Boolean> {    
+    const navSelected = await $$('.commentary-row__commentary')
+      .map(c => c.getText());
 
-  async getCommentaryText(sectionName: string): Promise<Boolean> {
-    const navSelected = await $('.commentary-row__commentary');
-    return (await navSelected.getText()) === sectionName;
+    return navSelected.includes(sectionName);
   }
 
-  async getStatsValue(sectionName: string, leftValue:string, rightValue:string): Promise<Boolean> {
-
+  async getStatsValue(sectionName: string,leftValue: string,rightValue: string): Promise<Boolean> {
+    
     let answer = false;
-
     const selectLeftValue = await $(`(//p[contains(text(), "${sectionName}")])[1]/preceding-sibling::p`);
     answer = (await selectLeftValue.getText()) === leftValue;
-
-    if (answer === true) {
-
-    const selectRightValue = await $(`(//p[contains(text(), "${sectionName}")])[1]/following-sibling::p`);
-    answer = (await selectRightValue.getText()) === rightValue;
-    
+    if (answer === true) 
+    {
+      const selectRightValue = await $(`(//p[contains(text(), "${sectionName}")])[1]/following-sibling::p`);
+      answer = (await selectRightValue.getText()) === rightValue;
     }
     return answer;
+  }
 
+  public async selectPlayer(player: string) {
+    const playerName = player.trim();
+    const findPlayer = await $(`//div[@class="player-row"]/div[@class="player-row__team-wrapper"]//p[text()='${playerName} ']`);
+    browser.waitUntil(async () => findPlayer.isDisplayed());
+    findPlayer.click();
   }
 
 }

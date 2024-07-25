@@ -1,4 +1,4 @@
-@Web
+@Web @Deprecated
 Feature: AO Web-Highlights
 
   As a user,
@@ -6,7 +6,7 @@ Feature: AO Web-Highlights
 
   Background: 
     Given I am on AO web home page
-    And I navigate to 'News' under 'NEWS'
+    And I navigate to "News" under "NEWS"
     And I see 'News' page is loaded
 
   Scenario: navigating to 'Highlights' page

@@ -27,10 +27,15 @@ export default class WebDrawsPageSteps {
     await WebDrawsPage.isPageLoaded();
   }
 
-  @then(/^I can see Matches for "([^"]*)"$/)
+  @then(/^I can see Matches for (.+)$/)
   public async thenICanSeeMatchesForGivenEvent(eventName: string) {
     expect(await WebDrawsPage.goToAnyMatchDetail()).toBe(true);
     expect(await WebMatchDetailsPage.isScoreCardTitleHasTheEventName(eventName)).toBe(true);
+  }
+
+  @then(/^I can see matches for the event$/)
+  public async thenICanMatchesForSelectedEvent() {
+    expect((await WebDrawsPage.getAllMatchesFromActiveRound()).length).toBeGreaterThan(0);
   }
 
   @then(/^I search player "([^"]*)"$/)

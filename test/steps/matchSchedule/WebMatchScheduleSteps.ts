@@ -1,3 +1,5 @@
+
+import { DataTable } from '@wdio/cucumber-framework';
 import { binding, then, when } from 'cucumber-tsflow';
 import WebMatchDetailsPage from 'src/pages/matchDetailsPage/WebMatchDetailsPage';
 import WebMatchSchedulePage from 'src/pages/matchSchedulePage/WebMatchSchedulePage';
@@ -51,5 +53,20 @@ export default class WebMatchScheduleSteps {
   public async thenISelectDay(day: string) {
     await WebMatchSchedulePage.goToTheGivenDay(day);
     expect(await (await WebMatchSchedulePage.getSelectedDay()).getDay()).toBe(day);
+  }
+
+  @then(/^I select "([^"]*)" from daypicker$/)
+  public async clickOnDayPicker(day: string) {
+    await WebMatchSchedulePage.clickOnDayPicker(day);
+  }
+  
+  @then(/^I see "([^"]*)" as status on Match Schedule page for that matchcard$/)
+  public async validateMatchCardStatus(status:string,table:DataTable){
+    const tableData = table.hashes();
+    const players = tableData[0];
+    expect(await WebMatchSchedulePage.getMatchStatus([
+      players.playerOneName,
+      players.playerTwoName])).toBe(status);
+
   }
 }

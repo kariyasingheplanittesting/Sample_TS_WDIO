@@ -12,10 +12,17 @@ class WebDrawsPage extends WebBasePage {
       //       the end of the tournament as the first round heading is not visible
       //       when the page loads during the later rounds
       const knockoutFirstRoundHeading = knockoutRoundHeading[0].getHTML();
-      return (await knockoutFirstRoundHeading).includes('1st Round');
+      
+      if(
+        (await knockoutFirstRoundHeading).includes('1st Round') || (await knockoutFirstRoundHeading).includes('Quarterfinals') || (await knockoutFirstRoundHeading).includes('Semifinals')){
+        return true;
+      }
+      
+        return false;
     });
-  }
 
+  }
+  
   async clickRoundNavBtn(round: string): Promise<boolean> {
     let feedTitleSelector: string;
     switch (round) {
@@ -176,7 +183,7 @@ if (!feedTitleHTML.includes(round)) {
     return (await this.getTheHighlightedMatches()).length > 0;
   }
 
-  private async searchInput(searchStr: string) {
+  async searchInput(searchStr: string) {
     await browser.waitUntil(async () => {
       const isSearchClickable = (await (await $('.player-search .multiselect__tags')).isClickable());
       return isSearchClickable === true;
@@ -192,7 +199,11 @@ if (!feedTitleHTML.includes(round)) {
   }
 
   async selectDropDown(event: string) {
-    return (await $('.filter-dropdown__select')).selectByVisibleText(event);
+    const dropdown = await $('.filter-dropdown__select');
+
+    await dropdown.scrollIntoView({ block: 'center', inline: 'center' });
+
+    return dropdown.selectByVisibleText(event);
   }
 
   async selectStatDropDown(event: string) {

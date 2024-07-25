@@ -1,7 +1,7 @@
 var { config } = require('./wdio.shared.conf.ts');
 
 config.port = 4723;
-config.path = '/wd/hub';
+config.path = '/';
 config.runner = 'local';
 config.maxInstances = 1;
 config.capabilities = [

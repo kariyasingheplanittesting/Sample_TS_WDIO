@@ -62,6 +62,7 @@
     "dotenv": "^16.0.1",
     "eslint-plugin-cucumber": "^2.0.0",
     "geckodriver": "^3.0.2",
+    "GitRepo": "git@github.com:kariyasingheplanittesting/Sample_Config_Shared_Repo.git#v1.0.0",
     "wdio-appium-service": "^0.2.3",
     "yarn": "^1.22.19"
   }

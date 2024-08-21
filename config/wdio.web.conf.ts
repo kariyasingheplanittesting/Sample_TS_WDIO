@@ -3,7 +3,7 @@ var {
   calculateCapabilities,
   readEnvironmentVariables,
   calculateConfigParameters,
-} = require('./wdio.shared.conf.ts');
+} = require('GitRepo/config/wdio.shared.conf.ts');
 
 config.runner = 'local';
 config.port = 4723;
